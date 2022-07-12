@@ -1,17 +1,18 @@
 # kubernetes-wordpress
 
-Run docker images
-1. create dockerfiles (wordpress and mariadb)
-2. build images
+## Docker
+
+### create dockerfiles (wordpress and mariadb)
+### build images
 ```
 docker build . -f .\dockerfiles\wordpress.dockerfile -t dennisshum/wordpress
 docker build . -f .\dockerfiles\mariadb.dockerfile -t dennisshum/mariadb
 ```
-3. create network
+### create network
 ```
 docker network create wordpress-network
 ```
-4. run images
+### run images
 ```
 docker run --rm -d --name mariadb --net wordpress-network `
 -e MYSQL_ROOT_PASSWORD=my_password_1234789 `
@@ -29,7 +30,7 @@ docker run --rm -d --name wordpress -p 80:80 --net wordpress-network `
 -e WORDPRESS_DB_NAME=my_wp_database `
 dennisshum/wordpress
 ```
-5. Clean up
+### Clean up
 ```
 docker ps
 docker rm -f wordpress
@@ -37,3 +38,6 @@ docker rm -f mariadb
 docker network rm wordpress-network
 rm mysql
 ```
+
+## Kubernetes
+
