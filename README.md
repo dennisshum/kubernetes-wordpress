@@ -50,6 +50,8 @@ https://kind.sigs.k8s.io/
 ```
 kind create cluster --name testing
 ```
+if fail, try increase Resources Memory in Docker Desktop to 6GB
+
 check cluster
 ```
 kubectl config get-contexts
