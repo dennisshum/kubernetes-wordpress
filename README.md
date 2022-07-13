@@ -72,7 +72,7 @@ kubectl -n wp-ns create cm mariadb `
 or
 ```
 kubectl -n wp-ns create cm mariadb `
---from-env-file=properties/configmap/mariadb.properties
+--from-env-file=env/configmap/mariadb.env
 ```
 check configmap
 ```
@@ -82,9 +82,39 @@ kubectl -n wp-ns get cm mariadb -o yaml
 ### Create secret
 ```
 kubectl -n wp-ns create secret generic wordpress `
---from-env-file=properties/secret/wordpress.properties
+--from-env-file=env/secret/wordpress.env
 ```
 ```
 kubectl -n wp-ns create secret generic mariadb `
---from-env-file=properties/secret/mariadb.properties
+--from-env-file=env/secret/mariadb.env
+```
+check secret
+```
+kubectl -n wp-ns get secret wordpress -o yaml
+kubectl -n wp-ns get secret mariadb -o yaml
+```
+
+### Deployment
+```
+kubectl -n wp-ns apply -f yaml/deployment.yaml
+```
+check deployment
+```
+kubectl -n wp-ns get deploy
+kubectl -n wp-ns describe deploy wordpress-deployment
+```
+
+### Service
+```
+kubectl -n wp-ns apply -f yaml/service.yaml
+```
+check service
+```
+kubectl -n wp-ns get svc
+kubectl -n wp-ns describe svc wordpress
+```
+
+### Check connection
+```
+kubectl -n wp-ns port-forward svc/wordpress 80
 ```
