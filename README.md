@@ -141,7 +141,7 @@ check k8s version
 ```
 kubectl version
 ```
-install Controller
+install Controller according to K8S version
 ```
 kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/cloud/deploy.yaml
 ```
