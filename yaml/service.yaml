@@ -7,8 +7,8 @@ metadata:
 spec:
   ports:
   - name: wordpress
-    port: 80
-    targetPort: 80
+    port: 80 # has to match kubectl port-forward
+    targetPort: 80 # has to match deployment.spec.template.spec.containers.ports.containerPort
   type: ClusterIP
   selector:
     app: wordpress

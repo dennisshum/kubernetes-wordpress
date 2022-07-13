@@ -1,26 +1,26 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: wordpress-deployment
+  name: adminer-deployment
   labels:
-    app: wordpress
+    app: adminer
 spec:
   selector:
     matchLabels:
-      app: wordpress # has to match .spec.template.metadata.lables
+      app: adminer # has to match .spec.template.metadata.lables
   replicas: 2
   strategy:
     type: RollingUpdate
   template:
     metadata:
       labels:
-        app: wordpress # has to match .spec.selector.matchLabels
+        app: adminer # has to match .spec.selector.matchLabels
     spec:
       containers:
-        - name: wordpress
-          image: wordpress
+        - name: adminer
+          image: adminer
           ports:
-            - containerPort: 80 # has to match service.spec.ports.targetPort
+            - containerPort: 8080 # has to match service.spec.ports.targetPort
           envFrom:
             - secretRef:
                 name: wordpress
