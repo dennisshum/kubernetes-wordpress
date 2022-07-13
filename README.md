@@ -131,3 +131,35 @@ kubectl -n wp-ns apply -f yaml/adminer-service.yaml
 ```
 kubectl -n wp-ns port-forward svc/adminer 8000
 ```
+
+### Install Ingress
+https://github.com/kubernetes/ingress-nginx
+
+https://kubernetes.github.io/ingress-nginx/deploy/
+
+check k8s version
+```
+kubectl version
+```
+install Controller
+```
+kubectl apply -f https://raw.githubusercontent.com/kubernetes/ingress-nginx/controller-v1.3.0/deploy/static/provider/cloud/deploy.yaml
+```
+check ingress pod
+```
+kubectl -n ingress-nginx get pod
+```
+check nginx
+```
+kubectl -n ingress-nginx port-forward svc/ingress-nginx-controller 80
+```
+
+### Create Ingress
+```
+kubectl -n wp-ns apply -f yaml/ingress.yaml
+```
+
+### Clean up
+```
+kind delete cluster --name testing
+```
