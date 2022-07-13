@@ -118,3 +118,16 @@ kubectl -n wp-ns describe svc wordpress
 ```
 kubectl -n wp-ns port-forward svc/wordpress 80
 ```
+
+### Add Adminer service
+```
+kubectl -n wp-ns apply -f yaml/adminer-deployment.yaml
+```
+```
+kubectl -n wp-ns apply -f yaml/adminer-service.yaml
+```
+
+### Check Adminer connection
+```
+kubectl -n wp-ns port-forward svc/adminer 8000
+```
