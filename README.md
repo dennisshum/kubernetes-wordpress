@@ -118,6 +118,11 @@ check secret
 kubectl -n wp-ns get secret wordpress -o yaml
 kubectl -n wp-ns get secret mariadb -o yaml
 ```
+if update configmap/secret, pod restart is required
+```
+kubectl -n wp-ns rollout restart deployment/wordpress-deployment
+kubectl -n wp-ns rollout restart deployment/adminer-deployment
+```
 
 ### Deployment
 ```
