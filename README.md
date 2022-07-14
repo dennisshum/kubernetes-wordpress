@@ -62,6 +62,8 @@ kubectl apply -f yaml/
 ```
 OR do it step-by-step
 
+
+
 ### Create namespace
 ```
 kubectl create ns wp-ns
@@ -88,6 +90,11 @@ kubectl -n wp-ns create cm mariadb `
 check configmap
 ```
 kubectl -n wp-ns get cm mariadb -o yaml
+```
+if update configmap/secret, pod restart is required
+```
+kubectl -n wp-ns rollout restart deployment/wordpress-deployment
+kubectl -n wp-ns rollout restart deployment/adminer-deployment
 ```
 
 ### Create secret
