@@ -56,6 +56,11 @@ check cluster
 ```
 kubectl config get-contexts
 ```
+Apply all YAML files
+```
+kubectl apply -f yaml/
+```
+OR do it step-by-step
 
 ### Create namespace
 ```
@@ -68,13 +73,17 @@ kubectl get ns
 
 ### Create configmap
 ```
-kubectl -n wp-ns create cm mariadb `
---from-literal MYSQL_RANDOM_ROOT_PASSWORD=1
+kubectl -n wp-ns apply -f yaml/mariadb-configmap.yaml
 ```
 or
 ```
 kubectl -n wp-ns create cm mariadb `
 --from-env-file=env/configmap/mariadb.env
+```
+or
+```
+kubectl -n wp-ns create cm mariadb `
+--from-literal MYSQL_RANDOM_ROOT_PASSWORD=1
 ```
 check configmap
 ```
@@ -82,6 +91,13 @@ kubectl -n wp-ns get cm mariadb -o yaml
 ```
 
 ### Create secret
+```
+kubectl -n wp-ns apply -f yaml/wordpress-secret.yaml
+```
+```
+kubectl -n wp-ns apply -f yaml/mariadb-secret.yaml
+```
+or
 ```
 kubectl -n wp-ns create secret generic wordpress `
 --from-env-file=env/secret/wordpress.env
@@ -163,5 +179,12 @@ kubectl -n wp-ns apply -f yaml/ingress.yaml
 
 ### Clean up
 ```
+kubectl delete ns wp-ns
+```
+```
 kind delete cluster --name testing
 ```
+
+## Useful tools
+Sed Command to Replace String in File (replace image tag)
+https://fedingo.com/sed-command-to-replace-string-in-file/
