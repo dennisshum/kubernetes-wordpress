@@ -18,7 +18,7 @@ spec:
         app: wordpress # has to match .spec.selector.matchLabels
     spec:
       containers:
-        - name: wordpress
+        - name: domainname-wp-pod
           image: wordpress
           ports:
             - containerPort: 80 # has to match service.spec.ports.targetPort
@@ -32,3 +32,10 @@ spec:
             limits:
               memory: 128Mi
               cpu: 500m
+          volumeMounts:
+            - name: pvcmount-wp # has to match .spec.template.spec.volumes.persistentVolumeClaim.claimName
+              mountPath: /var/www/html
+      volumes:
+        - name: pvcmount-wp # has to match .spec.template.spec.containers.volumeMounts.name
+          persistentVolumeClaim:
+            claimName: domainname-wp-pvc
