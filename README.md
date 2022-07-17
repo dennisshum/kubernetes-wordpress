@@ -198,6 +198,9 @@ kind delete cluster --name testing
 ```
 
 ## Useful tools
+Simple Wordpress example
+https://lexdsolutions.com/2021/09/deploying-wordpress-and-mysql-on-kubernetes-using-helm-chart/
+
 Sed Command to Replace String in File (replace image tag)
 https://fedingo.com/sed-command-to-replace-string-in-file/
 
