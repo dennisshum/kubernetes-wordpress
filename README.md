@@ -200,3 +200,6 @@ kind delete cluster --name testing
 ## Useful tools
 Sed Command to Replace String in File (replace image tag)
 https://fedingo.com/sed-command-to-replace-string-in-file/
+
+Explanation on ReadWriteOnce/ReadWriteMany
+https://stackoverflow.com/questions/57798267/kubernetes-persistent-volume-access-modes-readwriteonce-vs-readonlymany-vs-read
