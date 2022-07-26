@@ -44,6 +44,18 @@ spec:
                 name: mariadb-db-secret
             - configMapRef:
                 name: mariadb
+          readinessProbe:
+            exec:
+              command: [mysqladmin, ping]
+            initialDelaySeconds: 5
+            timeoutSeconds: 1
+          livenessProbe:
+            exec:
+              command:
+              - mysqladmin
+              - ping
+            initialDelaySeconds: 30
+            timeoutSeconds: 5
           volumeMounts:
             - name: domainname-db-pvc # has to match .spec.volumeClaimTemplates.metadata.name
               mountPath: /var/lib/mysql

@@ -32,6 +32,22 @@ spec:
             limits:
               memory: 128Mi
               cpu: 500m
+          readinessProbe:
+            httpGet:
+              path: /wp-login.php
+              port: https
+              scheme: HTTPS
+            initialDelaySeconds: 30
+            timeoutSeconds: 3
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /wp-login.php
+              port: https
+              scheme: HTTPS
+            initialDelaySeconds: 120
+            timeoutSeconds: 5
+            periodSeconds: 6
           volumeMounts:
             - name: pvcmount-wp # has to match .spec.template.spec.volumes.persistentVolumeClaim.claimName
               mountPath: /var/www/html
