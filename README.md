@@ -148,6 +148,10 @@ kubectl -n wp-ns describe svc wordpress
 ```
 kubectl -n wp-ns port-forward svc/wordpress 80
 ```
+if permission denied
+```
+sudo kubectl -n wp-ns port-forward svc/wordpress 80
+```
 
 ### Add Adminer service
 ```
