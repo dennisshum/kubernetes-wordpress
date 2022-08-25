@@ -58,7 +58,7 @@ kubectl config get-contexts
 ```
 Apply all YAML files
 ```
-kubectl apply -f yaml/
+kubectl -n wp-ns apply -f yaml/
 ```
 OR do it step-by-step
 
